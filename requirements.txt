@@ -1,0 +1,8 @@
+Flask==3.0.2
+Flask-SQLAlchemy==3.1.1
+scikit-learn==1.5.0
+Werkzeug==3.0.2
+pandas==2.2.2
+numpy==1.26.4
+reportlab==4.2.0
+gunicorn==23.0.0
