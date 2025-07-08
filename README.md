@@ -1,3 +1,7 @@
 Question paper generator python with flask
-https://github.com/user-attachments/assets/6fea89a2-b5c9-4b79-a519-178e751ddca1
+
+
+https://github.com/user-attachments/assets/773c16a6-012a-41a2-af07-58e296382e71
+
+
 
