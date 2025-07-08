@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ - Question Paper Generator{% endblock %}
+{% block body_class %}auth-bg{% endblock %}
+
+{% block content %}
+<div class="container" style="display: flex; align-items: center; justify-content: center; min-height: 70vh;">
+    <div class="card" style="max-width: 700px; margin: 0 auto;">
+        <div class="header">
+            <h1 style="color: #7c3aed; margin-bottom: 12px;">
+                <i class="fas fa-question-circle"></i> Frequently Asked Questions
+            </h1>
+        </div>
+        <div style="color: #222; font-size: 1.12rem;">
+            <b>Q: Do I need to register to use the generator?</b><br>
+            A: Yes, registration is required to generate and download question papers.<br><br>
+            <b>Q: Can I choose the number of questions?</b><br>
+            A: Yes, you can select how many questions you want in your paper (3, 5, 8, 10, or 20).<br><br>
+            <b>Q: What subjects are available?</b><br>
+            A: Over 100 fields and core subjects, including Engineering, Science, Commerce, Humanities, and more.<br><br>
+            <b>Q: Can I print or download the question paper?</b><br>
+            A: Yes, you can download your paper as a PDF or print it directly from the website.<br><br>
+            <b>Q: Who can use this tool?</b><br>
+            A: Teachers, students, and anyone preparing for exams or quizzes.<br><br>
+            <b>Q: How do I contact support?</b><br>
+            A: Use the <a href="/contact" style="color:#7c3aed; text-decoration:underline;">Contact</a> page to send us a message.
+        </div>
+    </div>
+</div>
+{% endblock %} 

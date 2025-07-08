@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Question Paper Generator{% endblock %}
+{% block body_class %}auth-bg{% endblock %}
+
+{% block content %}
+<div class="container" style="display: flex; align-items: center; justify-content: center; min-height: 70vh;">
+    <div class="card" style="max-width: 520px; margin: 0 auto; text-align: center;">
+        <div class="header">
+            <h1 style="font-size: 2.5rem; color: #7c3aed; margin-bottom: 12px;">
+                <i class="fas fa-graduation-cap"></i> Welcome!
+            </h1>
+            <p style="font-size: 1.2rem; color: #222; margin-bottom: 24px;">
+                Welcome to the <b>Question Paper Generator</b>.<br>
+                Effortlessly create, download, and print customized question papers for any subject or field.
+            </p>
+        </div>
+        <ul style="text-align: left; color: #333; margin: 0 auto 24px auto; max-width: 400px; font-size: 1.08rem;">
+            <li>✔️ 100+ fields and subjects</li>
+            <li>✔️ Modern, easy-to-use interface</li>
+            <li>✔️ Download as PDF or print instantly</li>
+            <li>✔️ Secure login and registration</li>
+        </ul>
+        <a href="/dashboard" class="btn btn-primary" style="font-size: 1.15rem; padding: 14px 36px;">
+            <i class="fas fa-magic"></i> Get Started
+        </a>
+    </div>
+</div>
+{% endblock %} 

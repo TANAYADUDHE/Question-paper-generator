@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Generated Question Paper{% endblock %}
+{% block body_class %}auth-bg{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="nav-bar" style="margin-bottom: 32px;">
+        <a href="/" class="nav-brand" style="color: #fff; font-size: 2rem; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+            <i class="fas fa-graduation-cap"></i> Question Paper Generator
+        </a>
+        <div class="nav-links">
+            <a href="/logout" class="btn btn-secondary" style="padding: 8px 20px;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="card" style="max-width: 700px; margin: 0 auto;">
+        <div class="header">
+            <h2 style="color: #10b981;">
+                <i class="fas fa-check-circle"></i> Generated Questions
+            </h2>
+            <p>Your personalized question paper is ready!</p>
+        </div>
+
+        <div class="actions" style="margin-bottom: 24px;">
+            <a href="/" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <ul class="questions-list">
+            {% for question in questions %}
+            <li style="background: rgba(255,255,255,0.7); color: #222; border-left: 4px solid #4f46e5;">
+                <strong>Question {{ loop.index }}:</strong> {{ question }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="actions">
+            <a href="/download" class="btn btn-success">
+                <i class="fas fa-download"></i> Download PDF
+            </a>
+            <button onclick="window.print()" class="btn btn-secondary">
+                <i style="color: #000;" class="fas fa-print"></i> <p style="color: #000;">Print</p>
+            </button>
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Generate New Paper
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

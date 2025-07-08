@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Educational Question Paper Generator{% endblock %}
+{% block body_class %}auth-bg{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="nav-bar" style="margin-bottom: 32px;">
+        <a href="/" class="nav-brand" style="color: #fff; font-size: 2rem; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+            <i class="fas fa-graduation-cap"></i> Question Paper Generator
+        </a>
+        <div class="nav-links">
+            <a href="/logout" class="btn btn-secondary" style="padding: 8px 20px;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="card" style="max-width: 1000px; margin: 0 auto;">
+        <div class="header">
+            <h1><i class="fas fa-file-alt"></i> Generate Question Paper</h1>
+            <p>Select a field to generate customized question papers</p>
+        </div>
+
+        <form method="POST">
+            <div class="form-group">
+                <label style="font-size: 1.1rem; margin-bottom: 16px;">
+                    <i class="fas fa-list"></i> Choose Your Field:
+                </label>
+                {% for category, category_fields in field_categories.items() %}
+                <div class="category-section">
+                    <h3 class="category-title">
+                        <i class="fas fa-folder"></i> {{ category }}
+                    </h3>
+                    <div class="field-selector">
+                        {% for field in category_fields %}
+                        {% if field in fields %}
+                        <div class="field-card {% if field == selected_field %}selected{% endif %}">
+                            <input type="radio" id="field_{{ field }}" name="field" value="{{ field }}" 
+                                   {% if field == selected_field %}checked{% endif %} required>
+                            <label for="field_{{ field }}">
+                                <i class="fas fa-book" style="font-size: 2rem; color: #4f46e5; margin-bottom: 8px; display: block;"></i>
+                                {{ field }}
+                            </label>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="question_count" style="font-size: 1.1rem; margin-bottom: 16px;">
+                    <i class="fas fa-hashtag"></i> Number of Questions:
+                </label>
+                <select name="question_count" id="question_count" class="form-control" style="max-width: 200px;">
+                    <option value="3" {% if question_count == 3 %}selected{% endif %}>3 Questions</option>
+                    <option value="5" {% if question_count == 5 %}selected{% endif %}>5 Questions</option>
+                    <option value="8" {% if question_count == 8 %}selected{% endif %}>8 Questions</option>
+                    <option value="10" {% if question_count == 10 %}selected{% endif %}>10 Questions</option>
+                    <option value="20" {% if question_count == 20 %}selected{% endif %}>20 Questions</option>
+                    <option value="30" {% if question_count == 30 %}selected{% endif %}>30 Questions</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">
+                <i class="fas fa-magic"></i> Generate Questions
+            </button>
+        </form>
+
+        {% if questions %}
+        <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid #e5e7eb;">
+            <div class="header">
+                <h2 style="color: #10b981;">
+                    <i class="fas fa-check-circle"></i> Generated Questions
+                </h2>
+                <p>Your personalized question paper is ready!</p>
+            </div>
+
+            <ul class="questions-list">
+                {% for question in questions %}
+                <li>
+                    <strong>Question {{ loop.index }}:</strong> {{ question }}
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="actions">
+                <a href="/download" class="btn btn-success">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button onclick="window.print()" class="btn btn-secondary">
+                    <i class="fas fa-print"></i> Print
+                </button>
+                <a href="/" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Generate New Paper
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// Add visual feedback for field selection
+document.querySelectorAll('.field-card input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        // Remove selected class from all cards
+        document.querySelectorAll('.field-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+        
+        // Add selected class to the chosen card
+        if (this.checked) {
+            this.closest('.field-card').classList.add('selected');
+        }
+    });
+});
+</script>
+{% endblock %}
